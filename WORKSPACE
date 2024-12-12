@@ -23,14 +23,3 @@ load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_depende
 # This sets up some common toolchains for building targets. For more details, please see
 # https://bazelbuild.github.io/rules_foreign_cc/0.13.0/flatten.html#rules_foreign_cc_dependencies
 rules_foreign_cc_dependencies()
-
-http_archive(
-    name = "com_github_luajit_luajit",
-    build_file_content = 'filegroup(name = "all", srcs = glob(["**"], exclude=[]), visibility = ["//visibility:public"])',
-    patches = ["//:luajit.patch"],
-    patch_args = ["-p1"],
-    patch_cmds = ["chmod u+x build.py"],
-    sha256 = "e91acbe181cf6ffa3ef15870b8e620131002240ba24c5c779fd0131db021517f",
-    strip_prefix = "LuaJIT-19878ec05c239ccaf5f3d17af27670a963e25b8b",
-    url = "https://github.com/LuaJIT/LuaJIT/archive/19878ec05c239ccaf5f3d17af27670a963e25b8b.tar.gz",
-)
