@@ -1,8 +1,7 @@
 Assuming `bazel` is actually `bazelisk`:
 
-Run `bazel build :luajit` and note that it fails.
+Run `bazel test //make_simple:*` and note that it succeeds.
 
-Change `.bazelversion` to read `6.5.0` and try again. It works.
+Run `bazel test //make_wildcard:*` and note that it fails.
 
-Dig into the build logs when running with 7.4.1 and find that inside
-of LuaJIT, `make -C src` causes make to segfault. No idea why.
+Change `.bazelversion` to read `6.5.0` and try again. Both now work.
